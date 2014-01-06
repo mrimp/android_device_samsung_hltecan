@@ -1,4 +1,5 @@
 # Copyright (C) 2014 The CyanogenMod Project
+# Copyright (C) 2014 The LiquidSmooth Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,23 +13,33 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Inherit device configuration
+# device
 $(call inherit-product, device/samsung/hltecan/full_hltecan.mk)
 
-## Specify phone tech before including full_phone
-$(call inherit-product, vendor/cm/config/gsm.mk)
+# phone
+$(call inherit-product, vendor/liquid/config/common_gsm.mk)
 
 # Enhanced NFC
 $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 
-# Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
-
-# Set build fingerprint / ID / Product Name ect.
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=hltevl TARGET_DEVICE=hltecan BUILD_FINGERPRINT="samsung/hltevl/hltecan:4.3/JSS15J/N900W8VLUBMJ4:user/release-keys" PRIVATE_BUILD_DESC="hltevl-user 4.3 JSS15J N900W8VLUBMJ4 release-keys"
+# telephony
+$(call inherit-product, vendor/liquid/config/common_phone.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_NAME := cm_hltecan
 PRODUCT_DEVICE := hltecan
+PRODUCT_BRAND := samsung
+PRODUCT_NAME := liquid_hltecan
 PRODUCT_MODEL := SM-N900W8
+PRODUCT_MANUFACTURER := samsung
+PRODUCT_PROPERTY_OVERRIDES += ro.buildzipid=liquid.hltecan.$(shell date +%m%d%y).$(shell date +%H%M%S)
+
+# override
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    BUILD_NUMBER=N900W8VLUBMJ4 \
+    PRODUCT_NAME=hlteevl \
+    TARGET_BUILD_TYPE=user \
+    BUILD_VERSION_TAGS=release-keys \
+    PRIVATE_BUILD_DESC="hltevl-user 4.3 JSS15J N900W8VLUBMJ4 release-keys" \
+    BUILD_FINGERPRINT="samsung/hltevl/hltecan:4.3/JSS15J/N900W8VLUBMJ4:user/release-keys"
+
 
