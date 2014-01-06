@@ -30,4 +30,4 @@
 TARGET_OTA_ASSERT_DEVICE := hltecan,SM-N900W8
 
 # Kernel
-TARGET_KERNEL_VARIANT_CONFIG := msm8974_sec_hlteeur_defconfig
+TARGET_KERNEL_VARIANT_CONFIG := msm8974_sec_hltetmo_defconfig
