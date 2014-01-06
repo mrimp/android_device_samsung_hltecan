@@ -17,6 +17,9 @@
 ## (2) Also get non-open-source specific aspects if available
 $(call inherit-product-if-exists, vendor/samsung/hltecan/hltecan-vendor.mk)
 
+#Specify NFC type.
+TARGET_NFC_TECH := nxp
+
 ## common overlays
 DEVICE_PACKAGE_OVERLAYS += device/samsung/hlte-common/overlay-gsm
 
